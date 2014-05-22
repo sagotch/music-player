@@ -61,3 +61,19 @@ body
   padding-left: 3rem;
   padding-right: 3rem;
   }
+
+.do-first
+{
+  font-size: 2rem;
+  line-height: 2rem;
+  padding: 1rem;
+  }
+
+.do-first::before
+{
+  content: "←";
+  display:block;
+  float: left;
+  font-size: 5rem;
+  line-height: 2rem;
+  }

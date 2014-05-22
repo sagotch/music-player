@@ -48,8 +48,8 @@
            data-ng-click="addAllSongs(directorysongs)">
         Add All
       </div>
-      <p data-ng-show="!directorysongs.length">
-        <strong>&larr; Choose an album first.</strong>
+      <p class="do-first" data-ng-show="!directorysongs.length">
+        <strong>Choose an album.</strong>
       </p>
       <table class="table table-bordered" data-ng-show="directorysongs.length">
         <tr data-ng-repeat="song in directorysongs">
@@ -76,8 +76,8 @@
            data-ng-click="deleteAllSongs()">
         Clear playlist
       </div>
-      <p data-ng-show="!playlistsongs.length">
-        <strong>&larr; Select a song to add it to playlist.</strong>
+      <p class="do-first" data-ng-show="!playlistsongs.length">
+        <strong>Select a song.</strong>
       </p>
       <table class="table table-bordered" data-ng-show="playlistsongs.length">
         <tr data-ng-repeat="song in playlistsongs">
