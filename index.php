@@ -31,7 +31,10 @@
         <div class="span4" id="center">
           <h3>Songs</h3>
           <div class="btn" ng-click="addAllSongs(directorysongs)">Add All</div>
-          <table class="table table-bordered">
+          <p ng-show="!directorysongs.length">
+            <strong>&larr; Choose an album first.</strong>
+          </p>
+          <table class="table table-bordered" ng-show="directorysongs.length">
             <tr ng-repeat="song in directorysongs">
               <td ng-click="addSong(song)" class="link">
                 {{song.name}}
@@ -43,7 +46,10 @@
           <h3>Playlist</h3>
           <div id="musicplayer"><audio id="player"></audio></div>
           <div class="btn" ng-click="deleteAllSongs()">Clear playlist</div>
-          <table class="table table-bordered">
+          <p ng-show="!playlistsongs.length">
+            <strong>&larr; Select a song to add it to playlist.</strong>
+          </p>
+          <table class="table table-bordered" ng-show="playlistsongs.length">
             <tr ng-repeat="song in playlistsongs">
               <td class="link">
                 <div class="song current" ng-show="$index==currentSongIndex">{{song.name}}</div>
