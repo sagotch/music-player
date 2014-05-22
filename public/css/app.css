@@ -53,3 +53,11 @@ body
 {
   background:url(../img/play.png) center left no-repeat;
   }
+
+.btn
+{
+  font-weight: bold;
+  margin: 1rem 0;
+  padding-left: 3rem;
+  padding-right: 3rem;
+  }

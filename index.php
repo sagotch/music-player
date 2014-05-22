@@ -5,8 +5,8 @@
     <script type="text/javascript">
      var playlistsongs =  [];
     </script>
-    <link rel="stylesheet" href="./public/css/app.css">
     <link rel="stylesheet" href="./public/css/bootstrap.css">
+    <link rel="stylesheet" href="./public/css/app.css">
     <script type="text/javascript" src="./public/config.php?view=jsobject">
     </script>
     <script type="text/javascript" src="./public/player/audio.min.js"></script>
@@ -37,7 +37,16 @@
       <h3>
         Songs
       </h3>
-      <div class="btn" ng-click="addAllSongs(directorysongs)">Add All</div>
+      <div class="btn disabled"
+           ng-show="!directorysongs.length"
+           ng-click="addAllSongs(directorysongs)">
+        Add All
+      </div>
+      <div class="btn"
+           ng-show="directorysongs.length"
+           ng-click="addAllSongs(directorysongs)">
+        Add All
+      </div>
       <p ng-show="!directorysongs.length">
         <strong>&larr; Choose an album first.</strong>
       </p>
@@ -56,7 +65,16 @@
       <div id="musicplayer">
         <audio id="player"></audio>
       </div>
-      <div class="btn" ng-click="deleteAllSongs()">Clear playlist</div>
+      <div class="btn disabled"
+           ng-show="!playlistsongs.length"
+           ng-click="deleteAllSongs()">
+        Clear playlist
+      </div>
+      <div class="btn"
+           ng-show="playlistsongs.length"
+           ng-click="deleteAllSongs()">
+        Clear playlist
+      </div>
       <p ng-show="!playlistsongs.length">
         <strong>&larr; Select a song to add it to playlist.</strong>
       </p>
