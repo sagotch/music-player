@@ -36,8 +36,10 @@
           </p>
           <table class="table table-bordered" ng-show="directorysongs.length">
             <tr ng-repeat="song in directorysongs">
-              <td ng-click="addSong(song)" class="link">
+              <td>
+                <span ng-click="addSong(song)" class="link">
                 {{song.name}}
+                </span>
               </td>
             </tr>
           </table>
@@ -51,12 +53,18 @@
           </p>
           <table class="table table-bordered" ng-show="playlistsongs.length">
             <tr ng-repeat="song in playlistsongs">
-              <td class="link">
-                <div class="song current" ng-show="$index==currentSongIndex">{{song.name}}</div>
-                <div class="song" ng-show="$index!=currentSongIndex">
-                  <span ng-click="playSong($index)">{{song.name}}</span>
-                  <span ng-click="deleteSong($index)" class="delete icon-trash"></span>
-                </div>
+              <td>
+                <span class="song link current"
+                      ng-show="$index==currentSongIndex">
+                  {{song.name}}
+                </span>
+                <span class="song link"
+                     ng-show="$index!=currentSongIndex"
+                     ng-click="playSong($index)">
+                  {{song.name}}
+                  <span ng-click="deleteSong($index)" class="delete icon-trash">
+                  </span>
+                </>
               </td>
             </tr>
           </table>

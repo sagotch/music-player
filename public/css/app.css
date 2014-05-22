@@ -10,10 +10,10 @@ body
   width: 100%;
   }
 
-
-.link,
-#albums .album
+.link
 {
+  padding-left: 2rem;
+  display: block;
   cursor: pointer;
   color:#0000E9;
   }
@@ -35,7 +35,6 @@ body
 
 #albums
 {
-/*  float: left;*/
   min-width: 40ex;
   }
 
@@ -44,18 +43,7 @@ body
   width: auto;
   }
 
-#right
-{
-  margin-right: 10px;
-  }
-
-#albums .album,
-#right .song
-{
-  padding-left: 2rem;
-  }
-
-#right .song .delete
+#right .delete
 {
   float:right;
   margin-right:10px;
