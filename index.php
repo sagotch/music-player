@@ -2,11 +2,12 @@
 <html lang="en" data-ng-app>
   <head>
     <meta charset="utf-8">
+    <link rel="icon" type="image/png" href="./public/img/default.png">
+    <link rel="stylesheet" href="./public/css/bootstrap.css">
+    <link rel="stylesheet" href="./public/css/app.css">
     <script type="text/javascript">
      var playlistsongs =  [];
     </script>
-    <link rel="stylesheet" href="./public/css/bootstrap.css">
-    <link rel="stylesheet" href="./public/css/app.css">
     <script type="text/javascript" src="./public/config.php?view=jsobject">
     </script>
     <script type="text/javascript" src="./public/player/audio.min.js"></script>
