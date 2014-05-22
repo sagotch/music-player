@@ -34,14 +34,22 @@ function DirectoriesList($scope, $http) {
             songs[cnt].playing = false;
             $scope.playlistsongs.push(songs[cnt]);
         }
-
-        runPlaylist();
+        
+        if (! ($scope.playlistsongs.length - numCnt))
+        {
+            runPlaylist();
+        }
 
     };
 
     $scope.addSong = function(song){
+
         $scope.playlistsongs.push(song);
-        runPlaylist();
+
+        if (! ($scope.playlistsongs.length - 1))
+        {
+            runPlaylist();
+        }
     };
 
     $scope.deleteSong = function(index){
