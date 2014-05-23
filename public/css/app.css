@@ -1,35 +1,16 @@
-body,
-html
-{
-  height: 100%;
-  }
-
 body
 {
   display: table;
   width: 100%;
   }
 
-.link
-{
-  padding-left: 2rem;
-  display: block;
-  cursor: pointer;
-  color:#0000E9;
-  }
-
-.link:hover
-{
-  text-decoration: underline;
-  }
-
 #albums,
 #center,
 #right
 {
-  float:none;
+  float: none;
   display: table-cell;
-  overflow: auto;
+  overflow: hidden;
   padding: 10px;
   }
 
@@ -54,14 +35,6 @@ body
   background:url(../img/play.png) center left no-repeat;
   }
 
-.btn
-{
-  font-weight: bold;
-  margin: 1rem 0;
-  padding-left: 3rem;
-  padding-right: 3rem;
-  }
-
 .do-first
 {
   font-size: 2rem;
@@ -84,4 +57,27 @@ body
   width: 100px;
   height: 100px;
   margin: 1rem;
+  }
+
+.link
+{
+  padding-left: 2rem;
+  display: block;
+  cursor: pointer;
+  color:#0000E9;
+  }
+
+.link:hover
+{
+  text-decoration: underline;
+  }
+
+/* override/overload some bootsrap classes. */
+
+.btn
+{
+  font-weight: bold;
+  margin: 1rem 0;
+  padding-left: 3rem;
+  padding-right: 3rem;
   }
