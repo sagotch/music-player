@@ -16,9 +16,12 @@
     <script type="text/javascript" src="./public/app/js/controllers.js"></script>
     <script type="text/javascript" src="./public/app/js/filters.js"></script>
   </head>
-  <body data-ng-controller="DirectoriesList">
+  <body>
+    <div id="wrapper" data-ng-controller="DirectoriesList">
+
     <div class="span4" id="albums">
       <h3>Artist / Albums</h3>
+      <div class="content">
       <table class="table table-bordered">
         <tr data-ng-repeat="dir in directories">
           <td>
@@ -33,7 +36,10 @@
           </td>
         </tr>
       </table>
+      </div>
     </div>
+
+
     <div class="span4" id="center">
       <h3>
         Songs
@@ -62,6 +68,7 @@
         </tr>
       </table>
     </div>
+
     <div class="span4" id="right">
       <h3>Playlist</h3>
       <div id="musicplayer">
@@ -94,10 +101,12 @@
               <span data-ng-click="deleteSong($index)"
                     class="delete icon-trash">
               </span>
-              </>
+            </span>
           </td>
         </tr>
       </table>
+    </div>
+
     </div>
     <script type="text/javascript">
      var currentSongIndex = 0;

@@ -1,22 +1,27 @@
-body
+html,
+body,
+#wrapper
 {
-  display: table;
+  box-sizing: border-box;
   width: 100%;
+  height: 100%;
   }
 
 #albums,
 #center,
 #right
 {
-  float: none;
-  display: table-cell;
-  overflow: hidden;
+  box-sizing: border-box;
+  height: 100%;
+  overflow: auto;
   padding: 10px;
   }
 
 #albums
 {
+  float: left;
   min-width: 40ex;
+  width: auto;
   }
 
 #center
@@ -24,9 +29,16 @@ body
   width: auto;
   }
 
+#right
+{
+  float: right;
+  min-width: 40ex;
+  width: auto;
+  }
+
 #right .delete
 {
-  float:right;
+  float: right;
   margin-right:10px;
   }
 
