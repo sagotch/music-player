@@ -45,7 +45,9 @@ foreach ($list as $file)
 
     if (! is_dir ($request_dir.$file))
     {
-        if (stristr ($file, ".mp3"))
+        if (stristr ($file, ".mp3")
+            || stristr ($file, ".ogg")
+            || stristr ($file, ".m4a"))
         {
             $songs [] = array (
                 "name" => $file,
