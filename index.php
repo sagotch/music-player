@@ -84,6 +84,12 @@
            data-ng-click="deleteAllSongs()">
         Clear playlist
       </div>
+      <div class="btn" data-ng-click="prevSong()">
+        <<
+      </div>
+      <div class="btn" data-ng-click="nextSong()">
+        >>
+      </div>
       <p class="do-first" data-ng-show="!playlistsongs.length">
         <strong>Select a song.</strong>
       </p>

@@ -67,20 +67,31 @@ function DirectoriesList($scope, $http) {
         }
     };
 
+    $scope.prevSong = function ()
+    {
+        if ($scope.currentSongIndex !== 0)
+        {
+            $scope.playSong($scope.currentSongIndex - 1);
+        }
+    };
+
+    $scope.nextSong = function ()
+    {
+        if ($scope.currentSongIndex !== $scope.playlistsongs.length - 1)
+        {
+            $scope.playSong($scope.currentSongIndex + 1);
+        }
+    }
+
     function runPlaylist(){
         if(player.playing == false){
             $scope.playSong($scope.currentSongIndex);
         }
     }
 
-    function songFinished(){
-        if($scope.currentSongIndex === $scope.playlistsongs.length-1){
-            
-        }else{
-
-            var index = $scope.currentSongIndex+1;
-            $scope.playSong(index);
-        }
+    function songFinished ()
+    {
+        $scope.next ();
     }
 
     $scope.playSong = function(index){
