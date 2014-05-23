@@ -19,99 +19,96 @@
   <body>
     <div id="wrapper" data-ng-controller="DirectoriesList">
 
-    <div class="span4" id="albums">
-      <h3>Artist / Albums</h3>
-      <div class="content">
-      <table class="table table-bordered">
-        <tr data-ng-repeat="dir in directories">
-          <td>
-            <h4 data-ng-click="selectAlbum(dir.name)">
-              {{dir.name}}
-            </h4> 
-            <div class="album link"
-                 data-ng-repeat="album in dir.children"
-                 data-ng-click="selectAlbum(dir.name+'/'+album.name)">
-              {{album.name}}
-            </div>
-          </td>
-        </tr>
-      </table>
+      <div class="span4" id="albums">
+        <h3>Artist / Albums</h3>
+        <table class="table table-bordered">
+          <tr data-ng-repeat="dir in directories">
+            <td>
+              <h4 data-ng-click="selectAlbum(dir.name)">
+                {{dir.name}}
+              </h4> 
+              <div class="album link"
+                   data-ng-repeat="album in dir.children"
+                   data-ng-click="selectAlbum(dir.name+'/'+album.name)">
+                {{album.name}}
+              </div>
+            </td>
+          </tr>
+        </table>
       </div>
-    </div>
 
-
-    <div class="span4" id="center">
-      <h3>
-        Songs
-      </h3>
-      <img src="{{directorycover}}" alt="{{directorycover}}" />
-      <div class="btn disabled"
-           data-ng-show="!directorysongs.length"
-           data-ng-click="addAllSongs(directorysongs)">
-        Add All
-      </div>
-      <div class="btn"
-           data-ng-show="directorysongs.length"
-           data-ng-click="addAllSongs(directorysongs)">
-        Add All
-      </div>
-      <p class="do-first" data-ng-show="!directorysongs.length">
-        <strong>Choose an album.</strong>
-      </p>
-      <table class="table table-bordered" data-ng-show="directorysongs.length">
-        <tr data-ng-repeat="song in directorysongs">
-          <td>
-            <span data-ng-click="addSong(song)" class="link">
-              {{song.name}}
-            </span>
-          </td>
-        </tr>
-      </table>
-    </div>
-
-    <div class="span4" id="right">
-      <h3>Playlist</h3>
-      <div id="musicplayer">
-        <audio id="player"></audio>
-      </div>
-      <div class="btn disabled"
-           data-ng-show="!playlistsongs.length"
-           data-ng-click="deleteAllSongs()">
-        Clear playlist
-      </div>
-      <div class="btn"
-           data-ng-show="playlistsongs.length"
-           data-ng-click="deleteAllSongs()">
-        Clear playlist
-      </div>
-      <div class="btn" data-ng-click="prevSong()">
-        <<
-      </div>
-      <div class="btn" data-ng-click="nextSong()">
-        >>
-      </div>
-      <p class="do-first" data-ng-show="!playlistsongs.length">
-        <strong>Select a song.</strong>
-      </p>
-      <table class="table table-bordered" data-ng-show="playlistsongs.length">
-        <tr data-ng-repeat="song in playlistsongs">
-          <td>
-            <span class="song link current"
-                  data-ng-show="$index==currentSongIndex">
-              {{song.name}}
-            </span>
-            <span class="song link"
-                  data-ng-show="$index!=currentSongIndex"
-                  data-ng-click="playSong($index)">
-              {{song.name}}
-              <span data-ng-click="deleteSong($index)"
-                    class="delete icon-trash">
+      <div class="span4" id="center">
+        <h3>
+          Songs
+        </h3>
+        <img src="{{directorycover}}" alt="{{directorycover}}" />
+        <div class="btn disabled"
+             data-ng-show="!directorysongs.length"
+             data-ng-click="addAllSongs(directorysongs)">
+          Add All
+        </div>
+        <div class="btn"
+             data-ng-show="directorysongs.length"
+             data-ng-click="addAllSongs(directorysongs)">
+          Add All
+        </div>
+        <p class="do-first" data-ng-show="!directorysongs.length">
+          <strong>Choose an album.</strong>
+        </p>
+        <table class="table table-bordered" data-ng-show="directorysongs.length">
+          <tr data-ng-repeat="song in directorysongs">
+            <td>
+              <span data-ng-click="addSong(song)" class="link">
+                {{song.name}}
               </span>
-            </span>
-          </td>
-        </tr>
-      </table>
-    </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="span4" id="right">
+        <h3>Playlist</h3>
+        <div id="musicplayer">
+          <audio id="player"></audio>
+        </div>
+        <div class="btn disabled"
+             data-ng-show="!playlistsongs.length"
+             data-ng-click="deleteAllSongs()">
+          Clear playlist
+        </div>
+        <div class="btn"
+             data-ng-show="playlistsongs.length"
+             data-ng-click="deleteAllSongs()">
+          Clear playlist
+        </div>
+        <div class="btn" data-ng-click="prevSong()">
+          <<
+        </div>
+        <div class="btn" data-ng-click="nextSong()">
+          >>
+        </div>
+        <p class="do-first" data-ng-show="!playlistsongs.length">
+          <strong>Select a song.</strong>
+        </p>
+        <table class="table table-bordered" data-ng-show="playlistsongs.length">
+          <tr data-ng-repeat="song in playlistsongs">
+            <td>
+              <span class="song link current"
+                    data-ng-show="$index==currentSongIndex">
+                {{song.name}}
+              </span>
+              <span class="song link"
+                    data-ng-show="$index!=currentSongIndex"
+                    data-ng-click="playSong($index)">
+                {{song.name}}
+                <span data-ng-click="deleteSong($index)"
+                      class="delete icon-trash">
+                </span>
+              </span>
+            </td>
+          </tr>
+        </table>
+      </div>
 
     </div>
     <script type="text/javascript">
