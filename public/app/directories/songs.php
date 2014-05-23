@@ -54,7 +54,8 @@ foreach ($list as $file)
                 "path" => $get_dir . "/" . $file
             );
         }
-        else if (stristr ($file, ".jpg"))
+        else if (stristr ($file, ".jpg")
+                 || stristr ($file, ".png"))
         {
             $return ['cover'] = $get_dir . "/" . $file;
         }
