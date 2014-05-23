@@ -45,14 +45,14 @@ foreach ($list as $file)
 
     if (! is_dir ($request_dir.$file))
     {
-        if (strstr ($file, ".mp3"))
+        if (stristr ($file, ".mp3"))
         {
             $songs [] = array (
                 "name" => $file,
                 "path" => $get_dir . "/" . $file
             );
         }
-        else if (strstr ($file, ".jpg"))
+        else if (stristr ($file, ".jpg"))
         {
             $return ['cover'] = $get_dir . "/" . $file;
         }
