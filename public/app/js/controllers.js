@@ -13,7 +13,8 @@ function DirectoriesList($scope, $http) {
             },
             method : 'get'
         }).success(function(data) {
-            $scope.directorysongs = data;
+            $scope.directorysongs = data.songs;
+            $scope.directorycover = data.cover;
             player.trackEnded = songFinished;
         });    
     };

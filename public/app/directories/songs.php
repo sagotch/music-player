@@ -34,20 +34,32 @@ if (! is_readable ($request_dir))
 
 $return = array ();
 
+$return ['cover'] = "";
+
 $list = scandir ($request_dir);
+
+$songs = array ();
 
 foreach ($list as $file)
 {
-    if (! is_dir($request_dir.$file)
-        && strstr($file, ".mp3"))
+
+    if (! is_dir ($request_dir.$file))
     {
-        $return [] = array (
-            "image" => "./public/img/default.png", 
-            "name" => $file,
-            "path" => $get_dir . "/" . $file
-        );
+        if (strstr ($file, ".mp3"))
+        {
+            $songs [] = array (
+                "name" => $file,
+                "path" => $get_dir . "/" . $file
+            );
+        }
+        else if (strstr ($file, ".jpg"))
+        {
+            $return ['cover'] = $get_dir . "/" . $file;
+        }
     }
 }
+
+$return ['songs'] = $songs;
 
 echo json_encode ($return);
 

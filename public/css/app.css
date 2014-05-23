@@ -77,3 +77,11 @@ body
   font-size: 5rem;
   line-height: 2rem;
   }
+
+#center img
+{
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  margin: 1rem;
+  }

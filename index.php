@@ -38,6 +38,7 @@
       <h3>
         Songs
       </h3>
+      <img src="{{directorycover}}" alt="{{directorycover}}" />
       <div class="btn disabled"
            data-ng-show="!directorysongs.length"
            data-ng-click="addAllSongs(directorysongs)">
