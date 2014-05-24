@@ -93,7 +93,7 @@ function DirectoriesList($scope, $http) {
 
     function songFinished ()
     {
-        $scope.next ();
+        $scope.nextSong ();
     }
 
     $scope.playSong = function(index){
