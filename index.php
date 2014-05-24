@@ -10,7 +10,7 @@
     </script>
     <script type="text/javascript" src="./public/config.php?view=jsobject">
     </script>
-    <script type="text/javascript" src="./public/player/audio.min.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/audiojs/0.1/audio.min.js"></script>
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
     <script type="text/javascript" src="./public/app/js/app.js"></script>
     <script type="text/javascript" src="./public/app/js/controllers.js"></script>
