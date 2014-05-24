@@ -11,7 +11,7 @@
     <script type="text/javascript" src="./public/config.php?view=jsobject">
     </script>
     <script type="text/javascript" src="./public/player/audio.min.js"></script>
-    <script type="text/javascript" src="./public/js/angular.min.js"></script>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
     <script type="text/javascript" src="./public/app/js/app.js"></script>
     <script type="text/javascript" src="./public/app/js/controllers.js"></script>
     <script type="text/javascript" src="./public/app/js/filters.js"></script>
@@ -68,7 +68,7 @@
           <strong>Select a song.</strong>
         </p>
         <table class="table table-bordered" data-ng-show="playlistsongs.length">
-          <tr data-ng-repeat="song in playlistsongs">
+          <tr data-ng-repeat="song in playlistsongs track by $index">
             <td>
               <span class="song link current"
                     data-ng-show="$index==currentSongIndex">
