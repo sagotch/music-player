@@ -19,7 +19,7 @@
   <body>
     <div id="wrapper" data-ng-controller="DirectoriesList">
 
-      <div class="span4" id="albums">
+      <div id="albums">
         <h3>Artist / Albums</h3>
         <table class="table table-bordered">
           <tr data-ng-repeat="dir in directories">
@@ -37,36 +37,13 @@
         </table>
       </div>
 
-      <div class="span4" id="center">
-        <h3>
-          Songs
-        </h3>
-        <img src="{{directorycover}}" alt="{{directorycover}}" />
-        <div class="btn disabled"
-             data-ng-show="!directorysongs.length"
-             data-ng-click="addAllSongs(directorysongs)">
-          Add All
-        </div>
-        <div class="btn"
-             data-ng-show="directorysongs.length"
-             data-ng-click="addAllSongs(directorysongs)">
-          Add All
-        </div>
-        <p class="do-first" data-ng-show="!directorysongs.length">
-          <strong>Choose an album.</strong>
-        </p>
-        <table class="table table-bordered" data-ng-show="directorysongs.length">
-          <tr data-ng-repeat="song in directorysongs">
-            <td>
-              <span data-ng-click="addSong(song)" class="link">
-                {{song.name}}
-              </span>
-            </td>
-          </tr>
-        </table>
-      </div>
+      <!--
+      Here is the trick: putting a "float: right" div before
+      another div will make this other div take place at the left
+      of the "float: right" one and expands as much as it can.
+      -->
 
-      <div class="span4" id="right">
+      <div id="right">
         <h3>Playlist</h3>
         <div id="musicplayer">
           <audio id="player"></audio>
@@ -104,6 +81,35 @@
                 <span data-ng-click="deleteSong($index)"
                       class="delete icon-trash">
                 </span>
+              </span>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <div id="center">
+        <h3>
+          Songs
+        </h3>
+        <img src="{{directorycover}}" alt="{{directorycover}}" />
+        <div class="btn disabled"
+             data-ng-show="!directorysongs.length"
+             data-ng-click="addAllSongs(directorysongs)">
+          Add All
+        </div>
+        <div class="btn"
+             data-ng-show="directorysongs.length"
+             data-ng-click="addAllSongs(directorysongs)">
+          Add All
+        </div>
+        <p class="do-first" data-ng-show="!directorysongs.length">
+          <strong>Choose an album.</strong>
+        </p>
+        <table class="table table-bordered" data-ng-show="directorysongs.length">
+          <tr data-ng-repeat="song in directorysongs">
+            <td>
+              <span data-ng-click="addSong(song)" class="link">
+                {{song.name}}
               </span>
             </td>
           </tr>
