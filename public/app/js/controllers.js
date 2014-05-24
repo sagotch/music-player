@@ -19,10 +19,12 @@ function DirectoriesList($scope, $http) {
         });    
     };
 
-    $scope.deleteAllSongs = function(){
-        $scope.playlistsongs.length = 0;
+    $scope.deleteAllSongs = function ()
+    {
         $scope.playlistsongs = [];
-        if(player.playing){
+        $scope.currentSongIndex = 0;
+        if (player.playing)
+        {
             player.pause();
         }
     };
