@@ -55,18 +55,24 @@ function DirectoriesList($scope, $http) {
         }
     };
 
-    $scope.deleteSong = function(index){
-        var cloneArray = [];
-        angular.forEach($scope.playlistsongs, function(item, cnt){
-            if(cnt != index){
-                cloneArray.push(item);
-            }
-        })
-        $scope.playlistsongs.length = 0;
-        $scope.playlistsongs = cloneArray;
-        if(this.$root.$$phase != "$apply"){
-            $scope.$digest();
+    $scope.deleteSong = function(index)
+    {
+
+        // Shift elements.
+        for (var i = index; i < $scope.playlistsongs.length - 1; i++)
+        {
+            $scope.playlistsongs[i] = $scope.playlistsongs[i + 1]
         }
+
+        // Adjust current index if needed.
+        if (index < $scope.currentSongIndex)
+        {
+            $scope.currentSongIndex -= 1;
+        }
+
+        // Remove the last item.
+        $scope.playlistsongs.pop();
+
     };
 
     $scope.prevSong = function ()
