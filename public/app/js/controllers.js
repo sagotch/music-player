@@ -102,21 +102,11 @@ function DirectoriesList($scope, $http) {
         $scope.nextSong ();
     }
 
-    $scope.playSong = function(index){
-        player.load($scope.playlistsongs[index].path);
-        player.play();
+    $scope.playSong = function (index)
+    {
+        player.load ($scope.playlistsongs[index].path);
+        player.play ();
         $scope.currentSongIndex = index;
-        // force ng-repeat
-        var cloneArray = [];
-        angular.forEach($scope.playlistsongs, function(item){
-           cloneArray.push(item);
-        })
-        $scope.playlistsongs.length = 0;
-        $scope.playlistsongs = cloneArray;
-        if(this.$root.$$phase != "$apply"){
-            $scope.$digest();
-        }
-        // end force ng-repeat
     };
 
    
