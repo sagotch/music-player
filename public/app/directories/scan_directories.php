@@ -20,19 +20,19 @@ function scanFolders ($dir)
 
     foreach ($list as $row)
     {
-        if (is_dir ($dir.$row)
+        if (is_dir ("$dir/$row")
             && ! in_array ($row, $exclude_dirs))
         {
             $dirs [$row] = array (
                 "name" => $row,
-                "children" => scanFolders ($dir . $row."/")
+                "children" => scanFolders ("$dir/$row")
             );
         }
     }
     return $dirs;
 }
 
-$dirs = scanFolders($root);
+$dirs = scanFolders("$root/$music_dir");
 
 if ($dynamic_dir_scan === true)
 {

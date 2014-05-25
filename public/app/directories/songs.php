@@ -15,12 +15,13 @@ if ($get_dir === false)
     error_message ();
 }
 
-$request_dir = $root.$get_dir;
+$request_dir = "$root/$music_dir/$get_dir";
 
 if (realpath ($request_dir) === false)
 {
     error_message ();
 }
+
 if (strstr ($request_dir, $root) === false)
 {
     error_message ();
@@ -43,7 +44,7 @@ $songs = array ();
 foreach ($list as $file)
 {
 
-    if (! is_dir ($request_dir.$file))
+    if (! is_dir ("$request_dir/$file"))
     {
         if (stristr ($file, ".mp3")
             || stristr ($file, ".ogg")
@@ -51,13 +52,13 @@ foreach ($list as $file)
         {
             $songs [] = array (
                 "name" => $file,
-                "path" => $get_dir . "/" . $file
+                "path" => "$music_dir/$get_dir/$file"
             );
         }
         else if (stristr ($file, ".jpg")
                  || stristr ($file, ".png"))
         {
-            $return ['cover'] = $get_dir . "/" . $file;
+            $return ['cover'] = "$music_dir/$get_dir/$file";
         }
     }
 }
