@@ -91,6 +91,18 @@ function DirectoriesList($scope, $http) {
         }
     }
 
+    $scope.playPause = function ()
+    {
+        if (player.playing)
+        {
+            player.pause();
+        }
+        else
+        {
+            player.play();
+        }
+    }
+
     $scope.shuffle = function ()
     {
 
@@ -113,6 +125,25 @@ function DirectoriesList($scope, $http) {
             $scope.playlistsongs[i] = tmp;
         }
 
+    }
+
+    $scope.onKeyDown = function (ev)
+    {
+        switch (ev.which)
+        {
+        case 37: // left
+            ev.preventDefault();
+            $scope.prevSong();
+            break;
+        case 39: // right
+            ev.preventDefault();
+            $scope.nextSong();
+            break;
+        case 32: // space
+            ev.preventDefault();
+            $scope.playPause();
+            break;
+        }
     }
 
 

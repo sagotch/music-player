@@ -16,8 +16,9 @@
     <script type="text/javascript" src="./public/app/js/controllers.js"></script>
     <script type="text/javascript" src="./public/app/js/filters.js"></script>
   </head>
-  <body>
-    <div id="wrapper" data-ng-controller="DirectoriesList">
+  <body data-ng-controller="DirectoriesList"
+        data-ng-keydown="onKeyDown($event)">
+    <div id="wrapper">
 
       <div id="albums">
         <h3>Artist / Albums</h3>
