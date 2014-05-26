@@ -63,6 +63,11 @@
              data-ng-click="nextSong()">
           >>
         </div>
+        <div class="btn btn-default"
+             data-ng-class="{'disabled': !playlistsongs.length}"
+             data-ng-click="shuffle()">
+          Shuffle
+        </div>
         <p class="do-first" data-ng-if="!playlistsongs.length">
           <strong>Select a song.</strong>
         </p>
