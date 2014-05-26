@@ -54,6 +54,10 @@
              data-ng-click="deleteAllSongs()">
           Clear playlist
         </div>
+        <div class="btn btn-default glyphicon glyphicon-play-pause"
+             data-ng-class="{'disabled': !playlistsongs.length}"
+             data-ng-click="playPause()">
+        </div>
         <div class="btn btn-default glyphicon glyphicon-fast-backward"
              data-ng-class="{'disabled': !playlistsongs.length}"
              data-ng-click="prevSong()">
