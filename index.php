@@ -53,20 +53,17 @@
              data-ng-click="deleteAllSongs()">
           Clear playlist
         </div>
-        <div class="btn btn-default"
+        <div class="btn btn-default glyphicon glyphicon-fast-backward"
              data-ng-class="{'disabled': !playlistsongs.length}"
              data-ng-click="prevSong()">
-          <<
         </div>
-        <div class="btn btn-default"
+        <div class="btn btn-default glyphicon glyphicon-fast-forward"
              data-ng-class="{'disabled': !playlistsongs.length}"
              data-ng-click="nextSong()">
-          >>
         </div>
-        <div class="btn btn-default"
+        <div class="btn btn-default glyphicon glyphicon-random"
              data-ng-class="{'disabled': !playlistsongs.length}"
              data-ng-click="shuffle()">
-          Shuffle
         </div>
         <p class="do-first" data-ng-if="!playlistsongs.length">
           <strong>Select a song.</strong>
