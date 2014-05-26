@@ -91,20 +91,28 @@ function DirectoriesList($scope, $http) {
         }
     }
 
-
-    /*
-     * FIXME:
-     * - Current song index is broken by the shuffle function
-     * - Shuffling method is not really efficient.
-     */
     $scope.shuffle = function ()
     {
+
+        var cur = $scope.playlistsongs[$scope.currentSongIndex];
+
         $scope.playlistsongs.sort (
             function ()
             {
                 return Math.floor( Math.random() * 3) - 1;
             }
         );
+
+        $scope.currentSongIndex = 0;
+
+        if (player.playing)
+        {
+            var tmp = $scope.playlistsongs[0];
+            var i = $scope.playlistsongs.indexOf(cur);
+            $scope.playlistsongs[0] = $scope.playlistsongs[i];
+            $scope.playlistsongs[i] = tmp;
+        }
+
     }
 
 
