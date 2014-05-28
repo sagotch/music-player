@@ -25,12 +25,13 @@
         <table class="table table-bordered">
           <tr data-ng-repeat="dir in directories">
             <td>
-              <h4 data-ng-click="selectAlbum(dir.name)">
+              <h4 data-ng-click="openDir(dir.name)">
                 {{dir.name}}
               </h4> 
               <div class="album link"
                    data-ng-repeat="album in dir.children"
-                   data-ng-click="selectAlbum(dir.name+'/'+album.name)">
+                   data-ng-click="selectAlbum(dir.name+'/'+album.name)"
+                   data-ng-show="isOpenedDir(dir.name)">
                 {{album.name}}
               </div>
             </td>

@@ -2,8 +2,29 @@
 
 /* Controllers */
 function DirectoriesList($scope, $http) {
+
+    $scope.openedDirectories = [];
+
     $scope.currentSongIndex = 0;
     $scope.playlistsongs = [];
+
+    $scope.openDir = function (dir)
+    {
+        var i = $scope.openedDirectories.indexOf(dir);
+        if (i == -1)
+        {
+            $scope.openedDirectories.push(dir);
+        }
+        else
+        {
+            $scope.openedDirectories.splice(i, 1);
+        }
+    };
+
+    $scope.isOpenedDir = function (dir)
+    {
+        return $scope.openedDirectories.indexOf(dir) > -1;
+    };
 
     $scope.selectAlbum = function(dir){
         $http({
