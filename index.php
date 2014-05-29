@@ -2,6 +2,7 @@
 <html lang="en" data-ng-app>
   <head>
     <meta charset="utf-8">
+    <title>music-player</title>
     <link rel="icon" type="image/png" href="./public/img/default.png">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="./public/css/app.css">
