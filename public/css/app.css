@@ -84,6 +84,11 @@ body,
   text-decoration: underline;
   }
 
+#player
+{
+  display: block;
+  width: 100%;
+}
 /* override/overload some bootsrap classes. */
 
 .btn

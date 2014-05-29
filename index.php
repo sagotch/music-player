@@ -11,7 +11,6 @@
     </script>
     <script type="text/javascript" src="./public/config.php?view=jsobject">
     </script>
-    <script type="text/javascript" src="//cdn.jsdelivr.net/audiojs/0.1/audio.min.js"></script>
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
     <script type="text/javascript" src="./public/app/js/app.js"></script>
     <script type="text/javascript" src="./public/app/js/controllers.js"></script>
@@ -48,9 +47,7 @@
 
       <div id="right">
         <h3>Playlist</h3>
-        <div id="musicplayer">
-          <audio id="player"></audio>
-        </div>
+        <audio id="player" controls></audio>
         <div class="btn btn-default"
              data-ng-class="{'disabled': !playlistsongs.length}"
              data-ng-click="deleteAllSongs()">
@@ -121,8 +118,6 @@
 
     </div>
     <script type="text/javascript">
-     var currentSongIndex = 0;
-     var player = audiojs.newInstance(document.getElementById("player"));
     </script>
 
   </body>

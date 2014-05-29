@@ -1,9 +1,9 @@
 music-player
 ============
 
-<p>A very lightweight directory based music player. Listing directories( artists ) and subdirectories( albums ).</p>
-<p>Making playlists from mp3 files in folders</p>
-<p></p>
+A very lightweight directory based music player. Listing directories 
+(artists) and subdirectories (albums) with playlist management.
+
 ### Suggested structure
     -root
     -ARTIST-1
@@ -16,13 +16,13 @@ music-player
         -Album-N
     -public ( not listed )
     -index.php
-<p></p>
-<p>Using AngularJS for listing (http://angularjs.org/)</p>
-<p>Bootstrap for UI (http://twitter.github.com/bootstrap/)</p>
-<p>Audio.js ( http://kolber.github.com/audiojs/ ) </p>
 
-<br />
-<br />
+Dependencies:
+* AngularJS for listing and player controllers (http://angularjs.org/)
+* Bootstrap for UI (http://twitter.github.com/bootstrap/)
+
 ### Screenshot
+
+An old and out of date screenshot:
 
 ![screenshot](preview.png)

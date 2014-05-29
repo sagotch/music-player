@@ -3,6 +3,9 @@
 /* Controllers */
 function DirectoriesList($scope, $http) {
 
+    var currentSongIndex = 0;
+    var player = document.getElementById("player");
+
     $scope.openedDirectories = [];
 
     $scope.currentSongIndex = 0;
@@ -36,7 +39,10 @@ function DirectoriesList($scope, $http) {
         }).success(function(data) {
             $scope.directorysongs = data.songs;
             $scope.directorycover = data.cover;
-            player.trackEnded = songFinished;
+            player.onended = function (e) { 
+                console.log('Track ended.');
+                $scope.nextSong();
+            }
         });    
     };
 
@@ -44,7 +50,7 @@ function DirectoriesList($scope, $http) {
     {
         $scope.playlistsongs = [];
         $scope.currentSongIndex = 0;
-        if (player.playing)
+        if (!player.paused)
         {
             player.pause();
         }
@@ -114,7 +120,7 @@ function DirectoriesList($scope, $http) {
 
     $scope.playPause = function ()
     {
-        if (player.playing)
+        if (!player.paused)
         {
             player.pause();
         }
@@ -138,7 +144,7 @@ function DirectoriesList($scope, $http) {
 
         $scope.currentSongIndex = 0;
 
-        if (player.playing)
+        if (!player.paused)
         {
             var tmp = $scope.playlistsongs[0];
             var i = $scope.playlistsongs.indexOf(cur);
@@ -169,19 +175,15 @@ function DirectoriesList($scope, $http) {
 
 
     function runPlaylist(){
-        if(player.playing == false){
+        if(player.paused){
             $scope.playSong($scope.currentSongIndex);
         }
     }
 
-    function songFinished ()
-    {
-        $scope.nextSong ();
-    }
-
     $scope.playSong = function (index)
     {
-        player.load ($scope.playlistsongs[index].path);
+        player.src = $scope.playlistsongs[index].path;
+        player.load ();
         player.play ();
         $scope.currentSongIndex = index;
     };
