@@ -186,7 +186,10 @@ function DirectoriesList($scope, $http) {
         $scope.currentSongIndex = index;
     };
 
-   
+    $scope.trimSong = function (song)
+    {
+        return song.replace(/^\d+\s*-?\s*|\.[^.]+$/gi, '');
+    };
 
     $http({
         url : 'public/app/directories/directories.php',
