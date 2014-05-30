@@ -6,6 +6,10 @@ function DirectoriesList($scope, $http) {
     var currentSongIndex = 0;
     var player = document.getElementById("player");
 
+    player.onended = function (e) {
+        $scope.nextSong();
+    }
+
     $scope.openedDirectories = [];
 
     $scope.currentSongIndex = 0;
@@ -39,10 +43,6 @@ function DirectoriesList($scope, $http) {
         }).success(function(data) {
             $scope.directorysongs = data.songs;
             $scope.directorycover = data.cover;
-            player.onended = function (e) { 
-                console.log('Track ended.');
-                $scope.nextSong();
-            }
         });    
     };
 
