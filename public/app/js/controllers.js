@@ -190,7 +190,7 @@ function DirectoriesList($scope, $http) {
 
     $scope.trimSong = function (song)
     {
-        return song.replace(/^\d+\s*-?\s*|\.[^.]+$/gi, '');
+        return song.replace(/^\d+\s*[-.]?\s*|\.[^.]+$/gi, '');
     };
 
     $http({
