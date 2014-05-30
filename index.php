@@ -83,7 +83,7 @@
               </span>
               <span class="song link"
                     data-ng-class="{'current': $index==currentSongIndex}"
-                    data-ng-click="playSong($index)">
+                    data-ng-click="playIndex($index)">
                 {{trimSong(song.name)}}
               </span>
             </td>
@@ -108,6 +108,9 @@
                data-ng-if="directorysongs.length">
           <tr data-ng-repeat="song in directorysongs">
             <td>
+              <span data-ng-click="playPath(song.path)"
+                    class="playPreview glyphicon glyphicon-play-circle">
+              </span>
               <span data-ng-click="addSong(song)" class="link">
                 {{trimSong(song.name)}}
               </span>

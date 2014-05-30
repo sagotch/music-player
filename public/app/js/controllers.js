@@ -106,7 +106,7 @@ function DirectoriesList($scope, $http) {
     {
         if ($scope.currentSongIndex !== 0)
         {
-            $scope.playSong($scope.currentSongIndex - 1);
+            $scope.playIndex($scope.currentSongIndex - 1);
         }
     };
 
@@ -114,7 +114,7 @@ function DirectoriesList($scope, $http) {
     {
         if ($scope.currentSongIndex !== $scope.playlistsongs.length - 1)
         {
-            $scope.playSong($scope.currentSongIndex + 1);
+            $scope.playIndex($scope.currentSongIndex + 1);
         }
     }
 
@@ -173,20 +173,27 @@ function DirectoriesList($scope, $http) {
         }
     }
 
-
     function runPlaylist(){
         if(player.paused){
-            $scope.playSong($scope.currentSongIndex);
+            $scope.playIndex($scope.currentSongIndex);
         }
     }
 
-    $scope.playSong = function (index)
+    /* Play file given a path */
+    $scope.playPath = function (path)
     {
-        player.src = $scope.playlistsongs[index].path;
+        player.src = path;
         player.load ();
         player.play ();
+    }
+
+    /* Play song in playlist and update current song index */
+    $scope.playIndex = function (index)
+    {
+        $scope.playPath($scope.playlistsongs[index].path);
         $scope.currentSongIndex = index;
     };
+
 
     $scope.trimSong = function (song)
     {

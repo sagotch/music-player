@@ -36,7 +36,8 @@ body,
   width: auto;
   }
 
-#right .delete
+#right .delete,
+.playPreview
 {
   float: right;
   margin-right:10px;
