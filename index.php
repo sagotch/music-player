@@ -111,7 +111,7 @@
           <tr data-ng-repeat="song in directorysongs">
             <td>
               <span data-ng-click="playPath(song.path)"
-                    class="playPreview glyphicon glyphicon-play-circle">
+                    class="play-preview glyphicon glyphicon-play-circle">
               </span>
               <span data-ng-click="addSong(song)" class="link">
                 {{trimSong(song.name)}}

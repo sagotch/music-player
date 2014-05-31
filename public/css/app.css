@@ -37,10 +37,20 @@ body,
   }
 
 #right .delete,
-.playPreview
+.play-preview
 {
   float: right;
   margin-right:10px;
+  }
+
+.play-preview
+{
+  color: grey;
+}
+
+.play-preview:hover
+{
+  color: black;
   }
 
 .do-first
