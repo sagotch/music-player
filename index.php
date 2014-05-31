@@ -76,13 +76,15 @@
                data-ng-if="playlistsongs.length">
           <tr data-ng-repeat="song in playlistsongs track by $index">
             <td>
+              <span data-ng-if="$index==currentSongIndex"
+                    class="current-icon glyphicon glyphicon-play-circle">
+              </span>
               <!-- CSS trick: add the "float:right" element first -->
               <span data-ng-if="$index!=currentSongIndex"
                     data-ng-click="deleteSong($index)"
                     class="delete glyphicon glyphicon-trash">
               </span>
               <span class="song link"
-                    data-ng-class="{'current': $index==currentSongIndex}"
                     data-ng-click="playIndex($index)">
                 {{trimSong(song.name)}}
               </span>

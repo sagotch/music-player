@@ -43,11 +43,6 @@ body,
   margin-right:10px;
   }
 
-#right .current
-{
-  background:url(../img/play.png) center left no-repeat;
-  }
-
 .do-first
 {
   font-size: 2rem;
@@ -90,6 +85,13 @@ body,
   display: block;
   width: 100%;
 }
+
+.current-icon
+{
+  font-size: 1.5rem;
+  float: left;
+  }
+
 /* override/overload some bootsrap classes. */
 
 .btn
