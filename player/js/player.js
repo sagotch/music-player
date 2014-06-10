@@ -1,14 +1,18 @@
 'use strict';
 
+/* var data is defined in a js file included before this one */
+
 /* Controllers */
 function DirectoriesList($scope, $http) {
+
+    $scope.library = data;
 
     var currentSongIndex = 0;
     var player = document.getElementById("player");
 
     player.onended = function (e) {
         $scope.nextSong();
-    }
+    };
 
     $scope.openedDirectories = [];
 
@@ -17,6 +21,7 @@ function DirectoriesList($scope, $http) {
 
     $scope.openDir = function (dir)
     {
+
         var i = $scope.openedDirectories.indexOf(dir);
         if (i == -1)
         {
@@ -33,17 +38,14 @@ function DirectoriesList($scope, $http) {
         return $scope.openedDirectories.indexOf(dir) > -1;
     };
 
-    $scope.selectAlbum = function(dir){
-        $http({
-            url : 'public/app/directories/songs.php',
-            params : {
-                dir : dir
-            },
-            method : 'get'
-        }).success(function(data) {
-            $scope.directorysongs = data.songs;
-            $scope.directorycover = data.cover;
-        });    
+    $scope.selectAlbum = function (artistId, albumId)
+    {
+        $scope.artistId = artistId;
+        $scope.albumId = albumId;
+        var album = $scope.library.artists[artistId].albums[albumId];
+        $scope.directorytitle = album.title;
+        $scope.directorycover = album.cover;
+        $scope.directorysongs = album.songs
     };
 
     $scope.deleteAllSongs = function ()
@@ -56,25 +58,27 @@ function DirectoriesList($scope, $http) {
         }
     };
 
-    $scope.addAllSongs = function(songs){
-        var cnt = 0,
-            numCnt = songs.length;
+    $scope.addAlbum = function (artistId, albumId)
+    {
+        var len =
+            $scope.library.artists[artistId].albums[albumId].songs.length;
 
-        for(; cnt < numCnt; cnt++){
-            songs[cnt].playing = false;
-            $scope.playlistsongs.push(songs[cnt]);
+        for (var i = 0; i < len; i++)
+        {
+            $scope.playlistsongs.push([artistId, albumId, i]);
         }
-        
-        if (! ($scope.playlistsongs.length - numCnt))
+
+        /* Start playing if playlist was empty */
+        if (! ($scope.playlistsongs.length - len))
         {
             runPlaylist();
         }
 
     };
 
-    $scope.addSong = function(song){
-
-        $scope.playlistsongs.push(song);
+    $scope.addSong = function(artistId, albumId, songId)
+    {
+        $scope.playlistsongs.push([artistId, albumId, songId]);
 
         if (! ($scope.playlistsongs.length - 1))
         {
@@ -190,8 +194,22 @@ function DirectoriesList($scope, $http) {
     /* Play song in playlist and update current song index */
     $scope.playIndex = function (index)
     {
-        $scope.playPath($scope.playlistsongs[index].path);
+        var ids = $scope.playlistsongs[index];
+        var artist = $scope.library.artists[ids[0]];
+        var album = artist.albums[ids[1]];
+        var song = album.songs[ids[2]];
+
+        console.log($scope.library.prefix
+                        + '/' + artist.name + '/' + album.title + '/' + song);
+
+        $scope.playPath($scope.library.prefix
+                        + '/' + artist.name + '/' + album.title + '/' + song);
         $scope.currentSongIndex = index;
+    };
+
+    $scope.trackTitle = function (ids)
+    {
+        return $scope.library.artists[ids[0]].albums[ids[1]].songs[ids[2]];
     };
 
 
@@ -200,15 +218,4 @@ function DirectoriesList($scope, $http) {
         return song.replace(/^\d+\s*[-.]?\s*|\.[^.]+$/gi, '');
     };
 
-    $http({
-        url : 'public/app/directories/directories.php',
-        method : "get"
-    }).success(function(data) {
-        $scope.directories = data;
-    });
-
-}
-
-function ReadAlbum(){
-    console.log("DA", arguments);
 }

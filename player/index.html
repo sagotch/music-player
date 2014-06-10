@@ -6,6 +6,7 @@
     <link rel="icon" type="image/png" href="">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/player.css">
+    <script type="text/javascript" src="music-data.js"></script>
     <script type="text/javascript" src="js/angular.min.js"></script>
     <script type="text/javascript" src="js/player.js"></script>
   </head>
@@ -16,16 +17,16 @@
       <div id="albums">
         <h3>Artist / Albums</h3>
         <table class="table table-bordered">
-          <tr data-ng-repeat="dir in directories">
+          <tr data-ng-repeat="artist in library.artists">
             <td>
-              <h4 data-ng-click="openDir(dir.name)">
-                {{dir.name}}
+              <!-- artists will be undefined -->
+              <h4 data-ng-click="openDir($index)">
+                {{artist.name}}
               </h4> 
               <div class="album link"
-                   data-ng-repeat="album in dir.children"
-                   data-ng-click="selectAlbum(dir.name+'/'+album.name)"
-                   data-ng-show="isOpenedDir(dir.name)">
-                {{album.name}}
+                   data-ng-repeat="album in library.artists[$index].albums"
+                   data-ng-click="selectAlbum($parent.$index, $index)">
+                {{album.title}}
               </div>
             </td>
           </tr>
@@ -79,7 +80,7 @@
               </span>
               <span class="song link"
                     data-ng-click="playIndex($index)">
-                {{trimSong(song.name)}}
+                {{trimSong(trackTitle(song))}}
               </span>
             </td>
           </tr>
@@ -93,7 +94,7 @@
         <img src="{{directorycover}}" alt="{{directorycover}}" />
         <div class="btn btn-default"
              data-ng-class="{'disabled': !directorysongs.length}"
-             data-ng-click="addAllSongs(directorysongs)">
+             data-ng-click="addAlbum(artistId, albumId)">
           Add All
         </div>
         <p class="do-first" data-ng-if="!directorysongs.length">
@@ -105,18 +106,16 @@
             <td>
               <span data-ng-click="playPath(song.path)"
                     class="play-preview glyphicon glyphicon-play-circle">
+                <!-- FIXME: Broken in new app -->
               </span>
-              <span data-ng-click="addSong(song)" class="link">
-                {{trimSong(song.name)}}
+              <span data-ng-click="addSong(artistId, albumId, $index)"
+                    class="link">
+                {{trimSong(song)}}
               </span>
             </td>
           </tr>
         </table>
       </div>
-
     </div>
-    <script type="text/javascript">
-    </script>
-
   </body>
 </html>
