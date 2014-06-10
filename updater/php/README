@@ -1,0 +1,9 @@
+= PHP updater =
+
+== Requirements ==
+
+Requires PHP 5.
+
+== Usage ==
+
+``` php updater.php [prefix] [music directory] > [music-data.json file] ```
