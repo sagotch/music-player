@@ -98,6 +98,7 @@ $library ['prefix'] = $argv [1] ;
 
 $library ['artists'] = library ($argv [2]) ;
 
-echo json_encode ($library) . "\n" ;
-
+echo 'var data=' ;
+echo json_encode ($library) ;
+echo ';' ;
 ?>

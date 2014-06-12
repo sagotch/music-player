@@ -6,4 +6,4 @@ Requires PHP 5.
 
 == Usage ==
 
-``` php updater.php [prefix] [music directory] > [music-data.json file] ```
+``` php updater.php [prefix] [music directory] > [music-data.js file] ```
