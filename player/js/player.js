@@ -5,37 +5,35 @@
 /* Controllers */
 function DirectoriesList($scope, $http) {
 
-    $scope.library = data;
-
     var currentSongIndex = 0;
     var player = document.getElementById("player");
+
+    $scope.library = data;
+    $scope.expanded = [];
+    $scope.currentSongIndex = 0;
+    $scope.playlistsongs = [];
 
     player.onended = function (e) {
         $scope.nextSong();
     };
 
-    $scope.openedDirectories = [];
-
-    $scope.currentSongIndex = 0;
-    $scope.playlistsongs = [];
-
-    $scope.openDir = function (dir)
+    $scope.toggleArtist = function (id)
     {
 
-        var i = $scope.openedDirectories.indexOf(dir);
+        var i = $scope.expanded.indexOf(id);
         if (i == -1)
         {
-            $scope.openedDirectories.push(dir);
+            $scope.expanded.push(id);
         }
         else
         {
-            $scope.openedDirectories.splice(i, 1);
+            $scope.expanded.splice(i, 1);
         }
     };
 
-    $scope.isOpenedDir = function (dir)
+    $scope.isExpanded = function (id)
     {
-        return $scope.openedDirectories.indexOf(dir) > -1;
+        return $scope.expanded.indexOf(id) > -1;
     };
 
     $scope.selectAlbum = function (artistId, albumId)

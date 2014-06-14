@@ -20,12 +20,13 @@
           <tr data-ng-repeat="artist in library.artists">
             <td>
               <!-- artists will be undefined -->
-              <h4 data-ng-click="openDir($index)">
+              <h4 data-ng-click="toggleArtist($index)">
                 {{artist.name}}
               </h4> 
               <div class="album link"
                    data-ng-repeat="album in library.artists[$index].albums"
-                   data-ng-click="selectAlbum($parent.$index, $index)">
+                   data-ng-click="selectAlbum($parent.$index, $index)"
+                   data-ng-show="isExpanded($parent.$index)">
                 {{album.title}}
               </div>
             </td>
