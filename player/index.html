@@ -89,21 +89,21 @@
       </div>
 
       <div id="album-div">
-        <h3>
-          Tracks
-        </h3>
-        <img src="{{directorycover}}" alt="{{directorycover}}" />
+        <div>
+          <h3>{{currentAlbumTitle}}</h3>
+          <img src="{{library.prefix}}/{{currentAlbumArtist}}/{{currentAlbumTitle}}/{{currentAlbumCover}}" alt="{{currentAlbumCover}}" />
+        </div>
         <div class="btn btn-default"
-             data-ng-class="{'disabled': !directorytracks.length}"
+             data-ng-class="{'disabled': !currentAlbumTracks.length}"
              data-ng-click="addAlbum(artistId, albumId)">
           Add All
         </div>
-        <p class="do-first" data-ng-if="!directorytracks.length">
+        <p class="do-first" data-ng-if="!currentAlbumTracks.length">
           <strong>Choose an album.</strong>
         </p>
         <table class="table table-bordered table-hover"
-               data-ng-if="directorytracks.length">
-          <tr data-ng-repeat="track in directorytracks">
+               data-ng-if="currentAlbumTracks.length">
+          <tr data-ng-repeat="track in currentAlbumTracks">
             <td>
               <span data-ng-click="playPath(track.path)"
                     class="play-preview glyphicon glyphicon-play-circle">

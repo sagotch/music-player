@@ -40,10 +40,13 @@ function DirectoriesList($scope, $http) {
     {
         $scope.artistId = artistId;
         $scope.albumId = albumId;
+
         var album = $scope.library.artists[artistId].albums[albumId];
-        $scope.directorytitle = album.title;
-        $scope.directorycover = album.cover;
-        $scope.directorytracks = album.tracks
+
+        $scope.currentAlbumArtist = $scope.library.artists[artistId].name;
+        $scope.currentAlbumTitle = album.title;
+        $scope.currentAlbumCover = album.cover;
+        $scope.currentAlbumTracks = album.tracks;
     };
 
     $scope.deleteAllTracks = function ()
