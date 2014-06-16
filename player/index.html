@@ -14,7 +14,7 @@
         data-ng-keydown="onKeyDown($event)">
     <div id="wrapper">
 
-      <div id="albums">
+      <div id="library-div">
         <h3>Artist / Albums</h3>
         <table class="table table-bordered">
           <tr data-ng-repeat="artist in library.artists">
@@ -40,78 +40,78 @@
       of the "float: right" one and expands as much as it can.
       -->
 
-      <div id="right">
+      <div id="player-div">
         <h3>Playlist</h3>
         <audio id="player" controls></audio>
         <div class="btn btn-default"
-             data-ng-class="{'disabled': !playlistsongs.length}"
-             data-ng-click="deleteAllSongs()">
+             data-ng-class="{'disabled': !playlistTracks.length}"
+             data-ng-click="deleteAllTracks()">
           Clear playlist
         </div>
         <div class="btn btn-default glyphicon glyphicon-play-pause"
-             data-ng-class="{'disabled': !playlistsongs.length}"
+             data-ng-class="{'disabled': !playlistTracks.length}"
              data-ng-click="playPause()">
         </div>
         <div class="btn btn-default glyphicon glyphicon-fast-backward"
-             data-ng-class="{'disabled': !playlistsongs.length}"
-             data-ng-click="prevSong()">
+             data-ng-class="{'disabled': !playlistTracks.length}"
+             data-ng-click="prevTrack()">
         </div>
         <div class="btn btn-default glyphicon glyphicon-fast-forward"
-             data-ng-class="{'disabled': !playlistsongs.length}"
-             data-ng-click="nextSong()">
+             data-ng-class="{'disabled': !playlistTracks.length}"
+             data-ng-click="nextTrack()">
         </div>
         <div class="btn btn-default glyphicon glyphicon-random"
-             data-ng-class="{'disabled': !playlistsongs.length}"
+             data-ng-class="{'disabled': !playlistTracks.length}"
              data-ng-click="shuffle()">
         </div>
-        <p class="do-first" data-ng-if="!playlistsongs.length">
-          <strong>Select a song.</strong>
+        <p class="do-first" data-ng-if="!playlistTracks.length">
+          <strong>Select a track.</strong>
         </p>
         <table class="table table-bordered table-hover"
-               data-ng-if="playlistsongs.length">
-          <tr data-ng-repeat="song in playlistsongs track by $index">
+               data-ng-if="playlistTracks.length">
+          <tr data-ng-repeat="track in playlistTracks track by $index">
             <td>
-              <span data-ng-if="$index==currentSongIndex"
+              <span data-ng-if="$index==currentTrackIndex"
                     class="current-icon glyphicon glyphicon-play-circle">
               </span>
               <!-- CSS trick: add the "float:right" element first -->
-              <span data-ng-if="$index!=currentSongIndex"
-                    data-ng-click="deleteSong($index)"
+              <span data-ng-if="$index!=currentTrackIndex"
+                    data-ng-click="deleteTrack($index)"
                     class="delete glyphicon glyphicon-trash">
               </span>
-              <span class="song link"
+              <span class="track link"
                     data-ng-click="playIndex($index)">
-                {{trimSong(trackTitle(song))}}
+                {{trimTrack(trackTitle(track))}}
               </span>
             </td>
           </tr>
         </table>
       </div>
 
-      <div id="center">
+      <div id="album-div">
         <h3>
-          Songs
+          Tracks
         </h3>
         <img src="{{directorycover}}" alt="{{directorycover}}" />
         <div class="btn btn-default"
-             data-ng-class="{'disabled': !directorysongs.length}"
+             data-ng-class="{'disabled': !directorytracks.length}"
              data-ng-click="addAlbum(artistId, albumId)">
           Add All
         </div>
-        <p class="do-first" data-ng-if="!directorysongs.length">
+        <p class="do-first" data-ng-if="!directorytracks.length">
           <strong>Choose an album.</strong>
         </p>
         <table class="table table-bordered table-hover"
-               data-ng-if="directorysongs.length">
-          <tr data-ng-repeat="song in directorysongs">
+               data-ng-if="directorytracks.length">
+          <tr data-ng-repeat="track in directorytracks">
             <td>
-              <span data-ng-click="playPath(song.path)"
+              <span data-ng-click="playPath(track.path)"
                     class="play-preview glyphicon glyphicon-play-circle">
                 <!-- FIXME: Broken in new app -->
               </span>
-              <span data-ng-click="addSong(artistId, albumId, $index)"
+              <span data-ng-click="addTrack(artistId, albumId, $index)"
                     class="link">
-                {{trimSong(song)}}
+                {{trimTrack(track)}}
               </span>
             </td>
           </tr>

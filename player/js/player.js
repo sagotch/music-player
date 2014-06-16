@@ -5,16 +5,16 @@
 /* Controllers */
 function DirectoriesList($scope, $http) {
 
-    var currentSongIndex = 0;
+    var currentTrackIndex = 0;
     var player = document.getElementById("player");
 
     $scope.library = data;
     $scope.expanded = [];
-    $scope.currentSongIndex = 0;
-    $scope.playlistsongs = [];
+    $scope.currentTrackIndex = 0;
+    $scope.playlistTracks = [];
 
     player.onended = function (e) {
-        $scope.nextSong();
+        $scope.nextTrack();
     };
 
     $scope.toggleArtist = function (id)
@@ -43,13 +43,13 @@ function DirectoriesList($scope, $http) {
         var album = $scope.library.artists[artistId].albums[albumId];
         $scope.directorytitle = album.title;
         $scope.directorycover = album.cover;
-        $scope.directorysongs = album.songs
+        $scope.directorytracks = album.tracks
     };
 
-    $scope.deleteAllSongs = function ()
+    $scope.deleteAllTracks = function ()
     {
-        $scope.playlistsongs = [];
-        $scope.currentSongIndex = 0;
+        $scope.playlistTracks = [];
+        $scope.currentTrackIndex = 0;
         if (!player.paused)
         {
             player.pause();
@@ -59,64 +59,64 @@ function DirectoriesList($scope, $http) {
     $scope.addAlbum = function (artistId, albumId)
     {
         var len =
-            $scope.library.artists[artistId].albums[albumId].songs.length;
+            $scope.library.artists[artistId].albums[albumId].tracks.length;
 
         for (var i = 0; i < len; i++)
         {
-            $scope.playlistsongs.push([artistId, albumId, i]);
+            $scope.playlistTracks.push([artistId, albumId, i]);
         }
 
         /* Start playing if playlist was empty */
-        if (! ($scope.playlistsongs.length - len))
+        if (! ($scope.playlistTracks.length - len))
         {
             runPlaylist();
         }
 
     };
 
-    $scope.addSong = function(artistId, albumId, songId)
+    $scope.addTrack = function(artistId, albumId, trackId)
     {
-        $scope.playlistsongs.push([artistId, albumId, songId]);
+        $scope.playlistTracks.push([artistId, albumId, trackId]);
 
-        if (! ($scope.playlistsongs.length - 1))
+        if (! ($scope.playlistTracks.length - 1))
         {
             runPlaylist();
         }
     };
 
-    $scope.deleteSong = function(index)
+    $scope.deleteTrack = function(index)
     {
 
         // Shift elements.
-        for (var i = index; i < $scope.playlistsongs.length - 1; i++)
+        for (var i = index; i < $scope.playlistTracks.length - 1; i++)
         {
-            $scope.playlistsongs[i] = $scope.playlistsongs[i + 1]
+            $scope.playlistTracks[i] = $scope.playlistTracks[i + 1]
         }
 
         // Adjust current index if needed.
-        if (index < $scope.currentSongIndex)
+        if (index < $scope.currentTrackIndex)
         {
-            $scope.currentSongIndex -= 1;
+            $scope.currentTrackIndex -= 1;
         }
 
         // Remove the last item.
-        $scope.playlistsongs.pop();
+        $scope.playlistTracks.pop();
 
     };
 
-    $scope.prevSong = function ()
+    $scope.prevTrack = function ()
     {
-        if ($scope.currentSongIndex !== 0)
+        if ($scope.currentTrackIndex !== 0)
         {
-            $scope.playIndex($scope.currentSongIndex - 1);
+            $scope.playIndex($scope.currentTrackIndex - 1);
         }
     };
 
-    $scope.nextSong = function ()
+    $scope.nextTrack = function ()
     {
-        if ($scope.currentSongIndex !== $scope.playlistsongs.length - 1)
+        if ($scope.currentTrackIndex !== $scope.playlistTracks.length - 1)
         {
-            $scope.playIndex($scope.currentSongIndex + 1);
+            $scope.playIndex($scope.currentTrackIndex + 1);
         }
     }
 
@@ -135,23 +135,23 @@ function DirectoriesList($scope, $http) {
     $scope.shuffle = function ()
     {
 
-        var cur = $scope.playlistsongs[$scope.currentSongIndex];
+        var cur = $scope.playlistTracks[$scope.currentTrackIndex];
 
-        $scope.playlistsongs.sort (
+        $scope.playlistTracks.sort (
             function ()
             {
                 return Math.floor( Math.random() * 3) - 1;
             }
         );
 
-        $scope.currentSongIndex = 0;
+        $scope.currentTrackIndex = 0;
 
         if (!player.paused)
         {
-            var tmp = $scope.playlistsongs[0];
-            var i = $scope.playlistsongs.indexOf(cur);
-            $scope.playlistsongs[0] = $scope.playlistsongs[i];
-            $scope.playlistsongs[i] = tmp;
+            var tmp = $scope.playlistTracks[0];
+            var i = $scope.playlistTracks.indexOf(cur);
+            $scope.playlistTracks[0] = $scope.playlistTracks[i];
+            $scope.playlistTracks[i] = tmp;
         }
 
     }
@@ -162,11 +162,11 @@ function DirectoriesList($scope, $http) {
         {
         case 37: // left
             ev.preventDefault();
-            $scope.prevSong();
+            $scope.prevTrack();
             break;
         case 39: // right
             ev.preventDefault();
-            $scope.nextSong();
+            $scope.nextTrack();
             break;
         case 32: // space
             ev.preventDefault();
@@ -177,7 +177,7 @@ function DirectoriesList($scope, $http) {
 
     function runPlaylist(){
         if(player.paused){
-            $scope.playIndex($scope.currentSongIndex);
+            $scope.playIndex($scope.currentTrackIndex);
         }
     }
 
@@ -189,31 +189,31 @@ function DirectoriesList($scope, $http) {
         player.play ();
     }
 
-    /* Play song in playlist and update current song index */
+    /* Play track in playlist and update current track index */
     $scope.playIndex = function (index)
     {
-        var ids = $scope.playlistsongs[index];
+        var ids = $scope.playlistTracks[index];
         var artist = $scope.library.artists[ids[0]];
         var album = artist.albums[ids[1]];
-        var song = album.songs[ids[2]];
+        var track = album.tracks[ids[2]];
 
         console.log($scope.library.prefix
-                        + '/' + artist.name + '/' + album.title + '/' + song);
+                        + '/' + artist.name + '/' + album.title + '/' + track);
 
         $scope.playPath($scope.library.prefix
-                        + '/' + artist.name + '/' + album.title + '/' + song);
-        $scope.currentSongIndex = index;
+                        + '/' + artist.name + '/' + album.title + '/' + track);
+        $scope.currentTrackIndex = index;
     };
 
     $scope.trackTitle = function (ids)
     {
-        return $scope.library.artists[ids[0]].albums[ids[1]].songs[ids[2]];
+        return $scope.library.artists[ids[0]].albums[ids[1]].tracks[ids[2]];
     };
 
 
-    $scope.trimSong = function (song)
+    $scope.trimTrack = function (track)
     {
-        return song.replace(/^\d+\s*[-.]?\s*|\.[^.]+$/gi, '');
+        return track.replace(/^\d+\s*[-.]?\s*|\.[^.]+$/gi, '');
     };
 
 }

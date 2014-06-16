@@ -9,7 +9,7 @@ function scan_dir ($dir)
  * @return php representation of album object
  * {
  *   "cover": "cover_file.jpg",
- *   "songs": ["track-01.ogg", "track-02.ogg, ..."]
+ *   "tracks": ["track-01.ogg", "track-02.ogg, ..."]
  * }
  */
 function album ($dir, $name)
@@ -21,7 +21,7 @@ function album ($dir, $name)
 
     $album ['cover'] = "" ;
 
-    $album ['songs'] = array () ;
+    $album ['tracks'] = array () ;
 
     $dirEntries = scan_dir ($dir) ;
 
@@ -31,7 +31,7 @@ function album ($dir, $name)
             || stristr ($entrie, '.ogg')
             || stristr ($entrie, '.m4a'))
         {
-            $album ['songs'] [] = $entrie ;
+            $album ['tracks'] [] = $entrie ;
         }
         else if (stristr ($entrie, '.jpg')
                  || stristr ($entrie, '.png'))

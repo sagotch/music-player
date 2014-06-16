@@ -7,9 +7,9 @@ body,
   height: 100%;
   }
 
-#albums,
-#center,
-#right
+#library-div,
+#album-div,
+#player-div
 {
   box-sizing: border-box;
   height: 100%;
@@ -17,26 +17,26 @@ body,
   padding: 10px;
   }
 
-#albums
+#library-div
 {
   float: left;
   min-width: 40ex;
   width: auto;
   }
 
-#center
+#album-div
 {
   width: auto;
   }
 
-#right
+#player-div
 {
   float: right;
   min-width: 40ex;
   width: auto;
   }
 
-#right .delete,
+#player-div .delete,
 .play-preview
 {
   float: right;
@@ -69,7 +69,7 @@ body,
   line-height: 2rem;
   }
 
-#center img
+#album-div img
 {
   display: inline-block;
   width: 100px;
