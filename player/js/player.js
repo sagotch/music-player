@@ -8,7 +8,8 @@ function DirectoriesList($scope, $http) {
     var currentTrackIndex = 0;
     var player = document.getElementById("player");
 
-    $scope.library = data;
+    $scope.libraryPath = data.prefix;
+    $scope.artists = data.artists;
     $scope.expanded = [];
     $scope.currentTrackIndex = 0;
     $scope.playlistTracks = [];
@@ -41,9 +42,9 @@ function DirectoriesList($scope, $http) {
         $scope.artistId = artistId;
         $scope.albumId = albumId;
 
-        var album = $scope.library.artists[artistId].albums[albumId];
+        var album = $scope.artists[artistId].albums[albumId];
 
-        $scope.currentAlbumArtist = $scope.library.artists[artistId].name;
+        $scope.currentAlbumArtist = $scope.artists[artistId].name;
         $scope.currentAlbumTitle = album.title;
         $scope.currentAlbumCover = album.cover;
         $scope.currentAlbumTracks = album.tracks;
@@ -62,7 +63,7 @@ function DirectoriesList($scope, $http) {
     $scope.addAlbum = function (artistId, albumId)
     {
         var len =
-            $scope.library.artists[artistId].albums[albumId].tracks.length;
+            $scope.artists[artistId].albums[albumId].tracks.length;
 
         for (var i = 0; i < len; i++)
         {
@@ -196,21 +197,18 @@ function DirectoriesList($scope, $http) {
     $scope.playIndex = function (index)
     {
         var ids = $scope.playlistTracks[index];
-        var artist = $scope.library.artists[ids[0]];
+        var artist = $scope.artists[ids[0]];
         var album = artist.albums[ids[1]];
         var track = album.tracks[ids[2]];
 
-        console.log($scope.library.prefix
-                        + '/' + artist.name + '/' + album.title + '/' + track);
-
-        $scope.playPath($scope.library.prefix
+        $scope.playPath($scope.libraryPath
                         + '/' + artist.name + '/' + album.title + '/' + track);
         $scope.currentTrackIndex = index;
     };
 
     $scope.trackTitle = function (ids)
     {
-        return $scope.library.artists[ids[0]].albums[ids[1]].tracks[ids[2]];
+        return $scope.artists[ids[0]].albums[ids[1]].tracks[ids[2]];
     };
 
 

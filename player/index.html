@@ -17,14 +17,14 @@
       <div id="library-div">
         <h3>Artist / Albums</h3>
         <table class="table table-bordered">
-          <tr data-ng-repeat="artist in library.artists">
+          <tr data-ng-repeat="artist in artists">
             <td>
               <!-- artists will be undefined -->
               <h4 data-ng-click="toggleArtist($index)">
                 {{artist.name}}
               </h4> 
               <div class="album link"
-                   data-ng-repeat="album in library.artists[$index].albums"
+                   data-ng-repeat="album in artists[$index].albums"
                    data-ng-click="selectAlbum($parent.$index, $index)"
                    data-ng-show="isExpanded($parent.$index)">
                 {{album.title}}
@@ -91,7 +91,7 @@
       <div id="album-div">
         <div>
           <h3>{{currentAlbumTitle}}</h3>
-          <img src="{{library.prefix}}/{{currentAlbumArtist}}/{{currentAlbumTitle}}/{{currentAlbumCover}}" alt="{{currentAlbumCover}}" />
+          <img src="{{libraryPath}}/{{currentAlbumArtist}}/{{currentAlbumTitle}}/{{currentAlbumCover}}" alt="{{currentAlbumCover}}" />
         </div>
         <div class="btn btn-default"
              data-ng-class="{'disabled': !currentAlbumTracks.length}"
