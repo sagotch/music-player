@@ -22,7 +22,7 @@
               <!-- artists will be undefined -->
               <h4 data-ng-click="toggleArtist($index)">
                 {{artist.name}}
-              </h4> 
+              </h4>
               <div class="album link"
                    data-ng-repeat="album in artists[$index].albums"
                    data-ng-click="selectAlbum($parent.$index, $index)"
@@ -41,32 +41,32 @@
       -->
 
       <div id="player-div">
-        <h3>Playlist</h3>
         <audio id="player" controls></audio>
-        <div class="btn btn-default"
-             data-ng-class="{'disabled': !playlistTracks.length}"
-             data-ng-click="deleteAllTracks()">
-          Clear playlist
+        <div class="btn-group">
+          <div class="btn btn-default glyphicon glyphicon-remove-sign"
+               data-ng-class="{'disabled': !playlistTracks.length}"
+               data-ng-click="deleteAllTracks()">
+          </div>
+          <div class="btn btn-default glyphicon glyphicon-play-pause"
+               data-ng-class="{'disabled': !playlistTracks.length}"
+               data-ng-click="playPause()">
+          </div>
+          <div class="btn btn-default glyphicon glyphicon-fast-backward"
+               data-ng-class="{'disabled': !playlistTracks.length}"
+               data-ng-click="prevTrack()">
+          </div>
+          <div class="btn btn-default glyphicon glyphicon-fast-forward"
+               data-ng-class="{'disabled': !playlistTracks.length}"
+               data-ng-click="nextTrack()">
+          </div>
+          <div class="btn btn-default glyphicon glyphicon-random"
+               data-ng-class="{'disabled': !playlistTracks.length}"
+               data-ng-click="shuffle()">
+          </div>
+          <p class="do-first" data-ng-if="!playlistTracks.length">
+            <strong>Select a track.</strong>
+          </p>
         </div>
-        <div class="btn btn-default glyphicon glyphicon-play-pause"
-             data-ng-class="{'disabled': !playlistTracks.length}"
-             data-ng-click="playPause()">
-        </div>
-        <div class="btn btn-default glyphicon glyphicon-fast-backward"
-             data-ng-class="{'disabled': !playlistTracks.length}"
-             data-ng-click="prevTrack()">
-        </div>
-        <div class="btn btn-default glyphicon glyphicon-fast-forward"
-             data-ng-class="{'disabled': !playlistTracks.length}"
-             data-ng-click="nextTrack()">
-        </div>
-        <div class="btn btn-default glyphicon glyphicon-random"
-             data-ng-class="{'disabled': !playlistTracks.length}"
-             data-ng-click="shuffle()">
-        </div>
-        <p class="do-first" data-ng-if="!playlistTracks.length">
-          <strong>Select a track.</strong>
-        </p>
         <table class="table table-bordered table-hover"
                data-ng-if="playlistTracks.length">
           <tr data-ng-repeat="track in playlistTracks track by $index">
