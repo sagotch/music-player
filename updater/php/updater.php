@@ -44,7 +44,7 @@ function album ($dir, $name)
 }
 
 /**
- * @return 
+ * @return
  * {
  *   "name" : "artist name",
  *   "albums" : [ album list ]
@@ -94,7 +94,7 @@ function library ($dir)
 
 $library = array () ;
 
-$library ['prefix'] = $argv [1] ;
+$library ['root'] = $argv [1] ;
 
 $library ['artists'] = library ($argv [2]) ;
 

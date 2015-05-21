@@ -1,14 +1,12 @@
 'use strict';
 
-/* var data is defined in a js file included before this one */
-
 /* Controllers */
-function DirectoriesList($scope, $http) {
+function MusicPlayer ($scope, $http) {
 
     var currentTrackIndex = 0;
     var player = document.getElementById("player");
 
-    $scope.libraryPath = data.prefix;
+    $scope.libraryPath = data.root ;
     $scope.artists = data.artists;
     $scope.expanded = [];
     $scope.currentTrackIndex = 0;
