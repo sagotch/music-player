@@ -1,18 +1,29 @@
 'use strict';
 
 /* Controllers */
-function MusicPlayer ($scope, $http) {
+function MusicPlayer ($scope, $http)
+{
 
     var currentTrackIndex = 0;
     var player = document.getElementById("player");
 
-    $scope.libraryPath = data.root ;
-    $scope.artists = data.artists;
-    $scope.expanded = [];
-    $scope.currentTrackIndex = 0;
-    $scope.playlistTracks = [];
+    var reset = function (data)
+    {
+        $scope.libraryPath = data.root ;
+        $scope.artists = data.artists ;
+        $scope.expanded = [] ;
+        $scope.currentTrackIndex = 0 ;
+        $scope.playlistTracks = [] ;
+    } ;
 
-    player.onended = function (e) {
+    reset ({ root : ".", artists : [] }) ;
+
+    $http.get ('music-library.json')
+        .success (reset)
+        .error (function () { alert ("Could not load json data!") ; }) ;
+
+    player.onended = function (e)
+    {
         $scope.nextTrack();
     };
 

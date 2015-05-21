@@ -98,7 +98,5 @@ $library ['root'] = $argv [1] ;
 
 $library ['artists'] = library ($argv [2]) ;
 
-echo 'var data=' ;
 echo json_encode ($library) ;
-echo ';' ;
 ?>
